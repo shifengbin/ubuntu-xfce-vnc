@@ -18,4 +18,5 @@ chmod a+x /root/.vnc/xstartup
 
 vncserver -geometry 1024x768 -depth 24 -localhost no
 
-sleep 1000
+
+./novnc/utils/novnc_proxy --vnc localhost:5901

@@ -61,7 +61,9 @@ ENV VNC_PASSWORD=12345678
 COPY start.sh start.sh
 RUN  chmod a+x  start.sh
 
-EXPOSE 5901 6901 
+COPY noVNC-1.4.0 novnc
+
+EXPOSE 5901 6080 
 
 CMD [ "./start.sh"]
 

@@ -18,5 +18,8 @@ chmod a+x /root/.vnc/xstartup
 
 vncserver -geometry 1024x768 -depth 24 -localhost no
 
+export DISPLAY=:1
+xset s noblank
+xset s off
 
 ./novnc/utils/novnc_proxy --vnc localhost:5901

@@ -22,4 +22,5 @@ export DISPLAY=:1
 xset s noblank
 xset s off
 
+
 ./novnc/utils/novnc_proxy --vnc localhost:5901

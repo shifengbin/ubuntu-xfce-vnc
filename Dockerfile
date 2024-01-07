@@ -62,7 +62,7 @@ COPY start.sh start.sh
 RUN  chmod a+x  start.sh
 
 EXPOSE 5901 6901 
-#1280x1024
+
 CMD [ "./start.sh"]
 
 #vncserver -geometry 1024x768 -depth 24 -localhost no

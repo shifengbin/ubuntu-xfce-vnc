@@ -54,16 +54,20 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    python3-numpy
+    python3-numpy \
+    python3-setuptools
 
 # RUN wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/code_1.85.1-1702462158_amd64.deb
 
 ENV VNC_PASSWORD=12345678
+ENV VNC_GEOMETRY=1024x768
 
 COPY start.sh start.sh
 RUN  chmod a+x  start.sh
 
+
 COPY noVNC-1.4.0 novnc
+RUN cd novnc/utils/websockify && python3 setup.py install
 
 EXPOSE 5901 6080 
 

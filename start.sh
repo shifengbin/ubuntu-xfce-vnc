@@ -27,6 +27,7 @@ chmod a+x /root/.vnc/xstartup
 
 vncserver -geometry $VNC_GEOMETRY -depth 24 -localhost no
 
+# 设置不锁屏，防止vnc黑屏
 export DISPLAY=:1
 xset s noblank
 xset s off

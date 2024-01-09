@@ -1,4 +1,11 @@
-#!/bin/sh
+# !/bin/sh
+
+# # 设置中文环境变量
+# locale-gen zh_CN.UTF-8
+# export LANG='zh_CN.utf8' 
+# export LANGUAGE='zh_CN:zh' 
+# export LC_ALL='zh_CN.utf8'
+# update-locale LANG=zh_CN.utf8
 
 
 # 设置vncserver密码，你可以将这行修改成你喜欢的密码
@@ -9,10 +16,12 @@ echo  ${VNC_PASSWORD} | vncpasswd -f > /root/.vnc/passwd
 chmod 600 /root/.vnc/passwd
 
 # 配置TigerVNC以使用Xfce 
-echo "#!/bin/sh\n"\
-"unset SESSION_MANAGER\n"\
-"unset DBUS_SESSION_BUS_ADDRESS\n"\
-"exec startxfce4" > /root/.vnc/xstartup
+cat > /root/.vnc/xstartup <<EOF
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+exec startxfce4
+EOF
 
 chmod a+x /root/.vnc/xstartup
 

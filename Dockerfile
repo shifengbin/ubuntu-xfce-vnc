@@ -62,15 +62,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 ENV VNC_PASSWORD=12345678
 ENV VNC_GEOMETRY=1024x768
 
-COPY start.sh start.sh
-RUN  chmod a+x  start.sh
+COPY initvnc initvnc
+RUN  chmod -R 0777 initvnc && initvnc/websockify.sh
 
-
-COPY noVNC-1.4.0 novnc
-RUN cd novnc/utils/websockify && python3 setup.py install
+# RUN cd initvnc/websockify && python3 setup.py install
 
 EXPOSE 5901 6080 
 
-CMD [ "./start.sh"]
+CMD [ "./initvnc/start.sh"]
 
 #vncserver -geometry 1024x768 -depth 24 -localhost no

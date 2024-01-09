@@ -1,10 +1,10 @@
-# !/bin/sh
+#!/bin/sh
 
 # # 设置中文环境变量
-# locale-gen zh_CN.UTF-8
-# export LANG='zh_CN.utf8' 
-# export LANGUAGE='zh_CN:zh' 
-# export LC_ALL='zh_CN.utf8'
+locale-gen zh_CN.UTF-8
+export LANG='zh_CN.utf8' 
+export LANGUAGE='zh_CN:zh' 
+export LC_ALL='zh_CN.utf8'
 # update-locale LANG=zh_CN.utf8
 
 
@@ -34,4 +34,4 @@ xset s off
 
 
 # ./novnc/utils/novnc_proxy --vnc localhost:5901
-websockify --web=novnc 6080 0.0.0.0:5901
+websockify --web=/initvnc/novnc 6080 0.0.0.0:5901

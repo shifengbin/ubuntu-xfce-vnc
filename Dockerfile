@@ -61,13 +61,24 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 ENV VNC_PASSWORD=12345678
 ENV VNC_GEOMETRY=1024x768
+ENV USER=vncuser
+ENV PASS=vncuser
+
 
 COPY initvnc initvnc
 RUN  chmod -R 0777 initvnc && initvnc/websockify.sh
 
-# RUN cd initvnc/websockify && python3 setup.py install
 
-EXPOSE 5901 6080 
+
+
+
+#不用安装websockify 在宿主机上安装 通过token-plugin方式访问
+# RUN cd initvnc \
+#     && git clone https://github.com/novnc/websockify.git \
+#     && cd websockify \
+#     && python3 setup.py install
+
+EXPOSE 5901 
 
 CMD [ "./initvnc/start.sh"]
 
